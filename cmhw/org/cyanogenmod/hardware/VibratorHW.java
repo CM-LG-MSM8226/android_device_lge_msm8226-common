@@ -22,11 +22,22 @@ import org.cyanogenmod.hardware.util.FileUtils;
 
 public class VibratorHW {
 
-    private static String NFORCE_PATH = "/sys/devices/platform/tspdrv/nforce_timed";
+    private static String TSPDRV_NFORCE_PATH = "/sys/devices/platform/tspdrv/nforce_timed";
+    private static String QPNP_NFORCE_PATH = "/sys/devices/virtual/timed_output/vibrator/vtg_level";
+    private static int control_type;
 
     public static boolean isSupported() {
-        File f = new File(NFORCE_PATH);
-        return f.exists();
+        File t = new File(TSPDRV_NFORCE_PATH);
+        File q = new File(QPNP_NFORCE_PATH);
+        if (t.exists()) {
+                control_type = 1;
+                return true;
+        } else if (q.exists()) {
+                control_type = 2;
+                return true;
+        } else {
+                return false;
+        }		
     }
 
     public static int getMaxIntensity()  {
@@ -39,12 +50,20 @@ public class VibratorHW {
         return 90;
     }
     public static int getCurIntensity()  {
-        return Integer.parseInt(FileUtils.readOneLine(NFORCE_PATH));
+        if (control_type == 1) {
+                return Integer.parseInt(FileUtils.readOneLine(TSPDRV_NFORCE_PATH));
+        } else {
+                return Integer.parseInt(FileUtils.readOneLine(QPNP_NFORCE_PATH));
+        }
     }
     public static int getDefaultIntensity()  {
         return 65;
     }
     public static boolean setIntensity(int intensity)  {
-        return FileUtils.writeLine(NFORCE_PATH, String.valueOf(intensity));
+        if (control_type == 1) {
+                return FileUtils.writeLine(TSPDRV_NFORCE_PATH, String.valueOf(intensity));
+        } else {
+                return FileUtils.writeLine(QPNP_NFORCE_PATH, String.valueOf(intensity));
+        }
     }
 }
