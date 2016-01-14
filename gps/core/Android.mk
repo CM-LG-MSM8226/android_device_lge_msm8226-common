@@ -1,20 +1,23 @@
-ifneq ($(BUILD_TINY_ANDROID),true)
-
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := libloc_core
 LOCAL_MODULE_OWNER := qcom
+LOCAL_PROPRIETARY_MODULE := true
 
 LOCAL_MODULE_TAGS := optional
 
+ifeq ($(TARGET_DEVICE),apq8026_lw)
+LOCAL_CFLAGS += -DPDK_FEATURE_SET
+endif
+
 LOCAL_SHARED_LIBRARIES := \
+    liblog \
     libutils \
     libcutils \
     libgps.utils \
-    libdl \
-    liblog
+    libdl
 
 LOCAL_SRC_FILES += \
     MsgTask.cpp \
@@ -45,6 +48,6 @@ LOCAL_COPY_HEADERS:= \
     loc_core_log.h \
     LocAdapterProxyBase.h
 
-include $(BUILD_SHARED_LIBRARY)
+LOCAL_PRELINK_MODULE := false
 
-endif # not BUILD_TINY_ANDROID
+include $(BUILD_SHARED_LIBRARY)

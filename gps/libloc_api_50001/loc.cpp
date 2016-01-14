@@ -31,6 +31,7 @@
 #define LOG_TAG "LocSvc_afw"
 
 #include <hardware/gps.h>
+#include <hardware/gps_internal.h>
 #include <gps_extended.h>
 #include <loc_eng.h>
 #include <loc_target.h>
@@ -193,7 +194,7 @@ static const GnssConfigurationInterface sLocEngConfigInterface =
 
 static loc_eng_data_s_type loc_afw_data;
 static int gss_fd = -1;
-
+static int sGnssType = GNSS_UNKNOWN;
 /*===========================================================================
 FUNCTION    gps_get_hardware_interface
 
@@ -245,8 +246,8 @@ extern "C" const GpsInterface* get_gps_interface()
     target = loc_get_target();
     LOC_LOGD("Target name check returned %s", loc_get_target_name(target));
 
-    int gnssType = getTargetGnssType(target);
-    switch (gnssType)
+    sGnssType = getTargetGnssType(target);
+    switch (sGnssType)
     {
     case GNSS_GSS:
     case GNSS_AUTO:
@@ -366,7 +367,7 @@ static int loc_init(GpsCallbacks* callbacks)
         for(mdm_index = 0;
             mdm_index < modem_info.num_modems;
             mdm_index++) {
-            if(modem_info.mdm_list[mdm_index].mdm_name) {
+            if((void *) modem_info.mdm_list[mdm_index].mdm_name != NULL) {
                 //Copy modem name to register with peripheral manager
                 strlcpy(loc_mdm_info.modem_name,
                         modem_info.mdm_list[mdm_index].mdm_name,
@@ -993,7 +994,10 @@ SIDE EFFECTS
 static int loc_xtra_init(GpsXtraCallbacks* callbacks)
 {
     ENTRY_LOG();
-    int ret_val = loc_eng_xtra_init(loc_afw_data, (GpsXtraExtCallbacks*)callbacks);
+    GpsXtraExtCallbacks extCallbacks;
+    memset(&extCallbacks, 0, sizeof(extCallbacks));
+    extCallbacks.download_request_cb = callbacks->download_request_cb;
+    int ret_val = loc_eng_xtra_init(loc_afw_data, &extCallbacks);
 
     EXIT_LOG(%d, ret_val);
     return ret_val;
@@ -1128,6 +1132,15 @@ static void loc_configuration_update(const char* config_data, int32_t length)
 {
     ENTRY_LOG();
     loc_eng_configuration_update(loc_afw_data, config_data, length);
+    switch (sGnssType)
+    {
+    case GNSS_GSS:
+    case GNSS_AUTO:
+    case GNSS_QCA1530:
+        //APQ
+        gps_conf.CAPABILITIES &= ~(GPS_CAPABILITY_MSA | GPS_CAPABILITY_MSB);
+        break;
+    }
     EXIT_LOG(%s, VOID_RET);
 }
 
