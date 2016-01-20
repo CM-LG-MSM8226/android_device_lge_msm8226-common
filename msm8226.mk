@@ -181,6 +181,10 @@ PRODUCT_COPY_FILES += \
 NFCEE_ACCESS_PATH := $(LOCAL_PATH)/prebuilt/etc/nfcee_access.xml
 endif
 
+# TWRP
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
+
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
 
