@@ -10,4 +10,4 @@
 /radio	      emmc	/dev/block/platform/msm_sdcc.1/by-name/modem	flags=backup=1
 /efs1	      emmc	/dev/block/platform/msm_sdcc.1/by-name/modemst1 flags=backup=1;display=EFS
 /efs2	      emmc	/dev/block/platform/msm_sdcc.1/by-name/modemst2 flags=backup=1;subpartitionof=/efs1
-/m1	      emmc	/dev/block/platform/msm_sdcc.1/by-name/misc	flags=backup=1;display=misc
+/misc	      emmc	/dev/block/platform/msm_sdcc.1/by-name/misc	flags=backup=1;display=misc
