@@ -101,6 +101,9 @@ PRODUCT_PACKAGES += \
     libwcnss_qmi
 endif
 
+PRODUCT_ENFORCE_RRO_TARGETS := \
+    framework-res
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
