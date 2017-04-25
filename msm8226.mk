@@ -175,6 +175,7 @@ PRODUCT_BOOT_JARS += telephony-ext
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8226 \
+    libcamera_parameters_shim \
     Snap
 
 ifeq ($(BOARD_HAS_NFC), true)
