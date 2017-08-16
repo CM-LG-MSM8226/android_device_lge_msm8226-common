@@ -90,10 +90,6 @@ vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
-vendor/lib/libwvdrm_L3.so
-vendor/lib/libwvm.so
-vendor/lib/libWVStreamControlAPI_L3.so
-vendor/lib/drm/libdrmwvmplugin.so
 
 # Media
 lib/libqomx_core.so
@@ -134,3 +130,8 @@ vendor/lib/libqc-opt.so
 vendor/lib/libDivxDrm.so
 vendor/lib/libmmosal.so
 vendor/lib/libSHIMDivxDrm.so
+
+# Widevine - from kipper
+vendor/lib/libwvdrm_L3.so
+vendor/lib/libWVStreamControlAPI_L3.so
+vendor/lib/mediadrm/libwvdrmengine.so
