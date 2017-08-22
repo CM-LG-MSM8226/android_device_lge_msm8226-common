@@ -108,16 +108,16 @@ PRODUCT_ENFORCE_RRO_TARGETS := \
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
     android.hardware.audio.effect@2.0-impl \
-    audiod \
-    audio.a2dp.default \
+    android.hardware.broadcastradio@1.0-impl \
+    android.hardware.soundtrigger@2.0-impl \
     audio.primary.msm8226 \
-    audio.r_submix.default \
+    audio.a2dp.default \
     audio.usb.default \
+    audio.r_submix.default \
     libaudio-resampler \
     libqcompostprocbundle \
     libqcomvisualizer \
-    libqcomvoiceprocessing \
-    tinymix
+    libqcomvoiceprocessing
 
 # Bluetooth
 PRODUCT_PACKAGES += \
