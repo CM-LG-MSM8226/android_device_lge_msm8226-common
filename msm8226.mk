@@ -182,6 +182,10 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libstagefrighthw
 
+# Perf
+PRODUCT_PACKAGES += \
+    libshims_atomic
+
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.0-impl \
