@@ -138,6 +138,10 @@ PRODUCT_PACKAGES += charger charger_res_images
 PRODUCT_PACKAGES += \
     gps.msm8226
 
+# HIDL
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
+
 # HAL
 PRODUCT_PACKAGES += \
     copybit.msm8226\
