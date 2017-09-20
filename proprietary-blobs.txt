@@ -81,10 +81,8 @@ vendor/lib/libscale.so
 
 # DRM
 bin/qseecomd
-etc/permissions/com.google.widevine.software.drm.xml
-framework/com.google.widevine.software.drm.jar
 vendor/lib/libQSEEComAPI.so
-lib/libdrmdecrypt.so
+vendor/lib/libdrmdecrypt.so
 vendor/lib/libdrmdiag.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
@@ -134,7 +132,5 @@ vendor/lib/libDivxDrm.so
 vendor/lib/libmmosal.so
 vendor/lib/libSHIMDivxDrm.so
 
-# Widevine - from kipper
-vendor/lib/libwvdrm_L3.so
-vendor/lib/libWVStreamControlAPI_L3.so
+# Widevine from angler - OPR6.170623.017 factory image
 vendor/lib/mediadrm/libwvdrmengine.so
