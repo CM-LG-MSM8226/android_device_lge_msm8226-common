@@ -126,7 +126,6 @@ vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
 
 # Perf
-bin/mpdecision
 vendor/lib/libqti-perfd-client.so
 vendor/lib/libqc-opt.so
 
