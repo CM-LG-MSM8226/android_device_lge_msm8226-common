@@ -199,4 +199,4 @@
 # End Immersion changes
 
 # BT/FM/ANT+ V4L2
-/dev/brcm_bt_drv 0660 bluetooth net_bt_stack
+/dev/brcm_bt_drv 0660 bluetooth bluetooth

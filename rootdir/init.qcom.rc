@@ -182,21 +182,21 @@ on boot
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/nfc/param 0770 nfc nfc
 
-    #BRCM Bluetooth
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwake
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/proto
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+    # BRCM Bluetooth
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chown bluetooth bluetooth /proc/bluetooth/sleep/btwake
+    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
+    chown bluetooth bluetooth /proc/bluetooth/sleep/lpm
+    chown bluetooth bluetooth /proc/bluetooth/sleep/btwrite
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /proc/bluetooth/sleep/btwake
     chmod 0660 /proc/bluetooth/sleep/proto
     chmod 0660 /proc/bluetooth/sleep/lpm
     chmod 0660 /proc/bluetooth/sleep/btwrite
-    chown bluetooth net_bt_stack /dev/ttyHS99
+    chown bluetooth bluetooth /dev/ttyHS99
     chmod 0660 /dev/ttyHS99
-    chown bluetooth net_bt_stack /sys/devices/platform/msm_serial_hs.0/clock
+    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
     # Wifi firmware reload path
@@ -523,13 +523,13 @@ service adsprpcd /system/bin/adsprpcd
 #Load MAC's for BRCM
 service brcm_hwaddrs /system/bin/hwaddrs
     user root
-    group system wifi bluetooth net_bt_admin misc net_bt_stack
+    group system wifi bluetooth net_bt_admin misc bluetooth
     oneshot
     class late_start
 
 service brcm_hwaddrs2 /system/bin/bdaddr_loader
     user root
-    group system wifi bluetooth net_bt_admin misc net_bt_stack
+    group system wifi bluetooth net_bt_admin misc bluetooth
     oneshot
     disabled
 
