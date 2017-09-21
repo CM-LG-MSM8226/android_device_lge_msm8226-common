@@ -142,6 +142,10 @@ PRODUCT_PACKAGES += \
 # Charger
 PRODUCT_PACKAGES += charger charger_res_images
 
+# Default OMX service to non-Treble
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.media.treble_omx=false
+
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl \
