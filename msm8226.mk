@@ -142,6 +142,10 @@ PRODUCT_PACKAGES += \
 # Charger
 PRODUCT_PACKAGES += charger charger_res_images
 
+# Memtrack HIDL Interfaces
+PRODUCT_PACKAGES += \
+    android.hardware.memtrack@1.0-impl
+
 # Default OMX service to non-Treble
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.media.treble_omx=false
@@ -160,7 +164,6 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.composer@2.1-impl \
     android.hardware.graphics.mapper@2.0-impl \
-    android.hardware.memtrack@1.0-impl \
     copybit.msm8226\
     gralloc.msm8226 \
     hwcomposer.msm8226 \
