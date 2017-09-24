@@ -267,6 +267,7 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag \
     android.hardware.nfc@1.0-impl \
+    android.hardware.nfc@1.0-service \
     nfc_nci.msm8226 \
     com.android.nfc_extras
 
