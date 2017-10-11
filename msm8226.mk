@@ -177,7 +177,8 @@ ifeq ($(BOARD_HAS_NFC), true)
 PRODUCT_PACKAGES += \
     NfcNci \
     Tag \
-    nfc_nci.pn54x.default \
+    android.hardware.nfc@1.0-impl \
+    nfc_nci.msm8226 \
     com.android.nfc_extras
 
 # Configs
