@@ -199,6 +199,10 @@ on boot
     chown bluetooth net_bt_stack /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+    chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
+
     # Led
     chown system system /sys/class/leds/red/blink
     chmod 0666 /sys/class/leds/red/blink
@@ -534,7 +538,7 @@ service uim /system/bin/brcm-uim-sysfs
     class late_start
     user root
     group bluetooth net_bt_admin net_bt
-    seclabel u:r:uim:s0
+#    seclabel u:r:uim:s0
 
 on property:init.svc.brcm_hwaddrs=stopped
     chmod 644 /data/misc/wifi/config
