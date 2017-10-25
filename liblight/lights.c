@@ -82,8 +82,7 @@ write_string(const char *path, const char *buffer)
 
     fd = open(path, O_RDWR);
     if (fd >= 0) {
-        int bytes = strlen(buffer);
-        int amt = write(fd, buffer, bytes);
+        ssize_t amt = write(fd, buffer, (size_t)strlen(buffer));
         close(fd);
         return amt == -1 ? -errno : 0;
     } else {
