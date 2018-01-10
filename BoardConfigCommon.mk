@@ -150,6 +150,11 @@ BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true
 # Recovery
 TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/fstab.full
 
+# Recovery: TWRP support
+ifeq ($(WITH_TWRP),true)
+-include $(VENDOR_PATH)/twrp.mk
+endif
+
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
 
