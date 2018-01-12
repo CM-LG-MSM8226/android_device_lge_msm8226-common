@@ -148,7 +148,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true 
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/fstab.full
+TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/fstab.qcom
 
 # Recovery: TWRP support
 ifeq ($(WITH_TWRP),true)

@@ -519,6 +519,8 @@ on property:init.svc.brcm_hwaddrs=stopped
 
 # Charger
 on charger
+    wait /dev/block/platform/msm_sdcc.1/by-name/system
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system ro barrier=1
     start rmt_storage
 
     write /sys/module/lpm_levels/enable_low_power/l2 1
