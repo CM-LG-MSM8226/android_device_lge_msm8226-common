@@ -24,8 +24,6 @@
 # inherit from the proprietary version
 VENDOR_PATH := device/lge/msm8226-common
 
-TARGET_SPECIFIC_HEADER_PATH += $(VENDOR_PATH)/include
-
 # Bootloader
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
@@ -129,7 +127,7 @@ VSYNC_EVENT_PHASE_OFFSET_NS := 2500000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 0000000
 
 # Hardware tunables framework
-BOARD_HARDWARE_CLASS := $(VENDOR_PATH)/cmhw/
+#BOARD_HARDWARE_CLASS := $(VENDOR_PATH)/cmhw/
 
 # GPS
 TARGET_NO_RPC := true

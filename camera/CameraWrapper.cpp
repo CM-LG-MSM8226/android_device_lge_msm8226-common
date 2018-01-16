@@ -41,6 +41,13 @@
 
 using namespace android;
 
+const char DENOISE_ON_OFF_MODES_MAP[] = "denoise-values";
+const char AUTO_HDR_SUPPORTED[] = "auto-hdr-supported";
+const char KEY_QC_SUPPORTED_AE_BRACKETING_MODES[] = "ae-bracket-hdr-values";
+const char KEY_HDR_MODE[] = "hdr-mode";
+const char KEY_QC_ZSL[] = "zsl";
+const char KEY_LGE_CAMERA[] = "lge-camera";
+
 static Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
@@ -354,11 +361,11 @@ static char *camera_fixup_getparams(int id, const char *settings)
         ALOGW("HDR is not supported, device: %s", board);
     }
 
-    params.set(CameraParameters::DENOISE_ON_OFF_MODES_MAP, "denoise-off,denoise-on");
+    params.set(DENOISE_ON_OFF_MODES_MAP, "denoise-off,denoise-on");
 
     /* Remove not supported options from camera apps */
-    params.set(CameraParameters::AUTO_HDR_SUPPORTED, "false");
-    params.set(CameraParameters::KEY_QC_SUPPORTED_AE_BRACKETING_MODES, "");
+    params.set(AUTO_HDR_SUPPORTED, "false");
+    params.set(KEY_QC_SUPPORTED_AE_BRACKETING_MODES, "");
 
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
@@ -400,13 +407,13 @@ static char *camera_fixup_setparams(const char *settings)
 
     /* Set "hdr-mode"="1" if fake hdr scene mode activated */
     if (photoMode && sceneModeHdr) {
-        params.set(CameraParameters::KEY_HDR_MODE, "1");
-        params.set(CameraParameters::KEY_QC_ZSL, "on");
+        params.set(KEY_HDR_MODE, "1");
+        params.set(KEY_QC_ZSL, "on");
     } else {
-        params.set(CameraParameters::KEY_HDR_MODE, "0");
+        params.set(KEY_HDR_MODE, "0");
     }
 
-    params.set(CameraParameters::KEY_LGE_CAMERA, "1");
+    params.set(KEY_LGE_CAMERA, "1");
 
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
