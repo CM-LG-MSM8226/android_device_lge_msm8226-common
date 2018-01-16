@@ -24,6 +24,7 @@
 //#define LOG_NDEBUG 0
 
 #define LOG_TAG "CameraWrapper"
+#include <android-base/properties.h>
 #include <cutils/log.h>
 #include <cutils/properties.h>
 
@@ -40,6 +41,7 @@
 #define FRONT_CAMERA_ID 1
 
 using namespace android;
+using android::base::GetProperty;
 
 const char DENOISE_ON_OFF_MODES_MAP[] = "denoise-values";
 const char AUTO_HDR_SUPPORTED[] = "auto-hdr-supported";
@@ -329,7 +331,6 @@ static char *camera_fixup_getparams(int id, const char *settings)
     const char *supportedPreviewSizesSelfie = "1280x960,1280x800,1280x720,1024x768,1024x640,960x720,960x540,864x480,800x600,800x500,800x480,720x480,704x576,640x480,576x432,480x320,384x288,352x288,320x240,176x144";
 
     char *sceneModes;
-    char board[PROPERTY_VALUE_MAX];
     bool photoMode = true;
 
     android::CameraParameters params;
@@ -345,9 +346,9 @@ static char *camera_fixup_getparams(int id, const char *settings)
         photoMode = (!strcmp(params.get(CameraParameters::KEY_RECORDING_HINT), "false"));
     }
 
-    property_get("ro.product.board", board, "ro.product.board not found!!!");
+    std::string board = GetProperty("ro.product.board", "");
 
-    if (!strcmp(board, "g2m") || (!strcmp(board, "jagnm")) || (!strcmp(board, "jag3gds"))) {
+    if (board == "g2m" || board == "jagnm" || board == "jag3gds") {
         /* Add fake HDR as supported scene mode in "scene-mode-values" */
         if (photoMode) {
             sceneModes = strdup(params.get(CameraParameters::KEY_SUPPORTED_SCENE_MODES));
@@ -358,7 +359,7 @@ static char *camera_fixup_getparams(int id, const char *settings)
             free(sceneModes);
         }
     } else {
-        ALOGW("HDR is not supported, device: %s", board);
+        ALOGW("HDR is not supported, device: %s", board.c_str());
     }
 
     params.set(DENOISE_ON_OFF_MODES_MAP, "denoise-off,denoise-on");
