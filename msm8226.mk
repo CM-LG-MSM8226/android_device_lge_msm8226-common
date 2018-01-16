@@ -206,6 +206,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     imgdiff
 
+# RenderScript HAL
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0-impl
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
