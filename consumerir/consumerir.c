@@ -36,7 +36,7 @@
 
 /* from HAL */
 #define MIXER_CARD 0
-#define MIXER_XML_PATH "/system/etc/mixer_paths.xml"
+#define MIXER_XML_PATH "/vendor/etc/mixer_paths.xml"
 #define DEFAULT_OUTPUT_SAMPLING_RATE 48000
 #define LOW_LATENCY_OUTPUT_PERIOD_SIZE 256 // audio hal 240
 #define LOW_LATENCY_OUTPUT_PERIOD_COUNT 2
