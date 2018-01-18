@@ -142,7 +142,10 @@ PRODUCT_PACKAGES += \
 ifeq ($(BOARD_HAS_LG_IRRC),true)
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml
-PRODUCT_PACKAGES += consumerir.msm8226
+PRODUCT_PACKAGES += \
+    android.hardware.ir@1.0-impl \
+    android.hardware.ir@1.0-service \
+    consumerir.msm8226
 endif
 
 # Keystore
