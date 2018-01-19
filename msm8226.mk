@@ -107,7 +107,9 @@ PRODUCT_ENFORCE_RRO_TARGETS := \
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
+    android.hardware.audio@2.0-service \
     android.hardware.audio.effect@2.0-impl \
+    android.hardware.audio.effect@2.0-service \
     android.hardware.broadcastradio@1.0-impl \
     android.hardware.soundtrigger@2.0-impl \
     audio.primary.msm8226 \
@@ -122,6 +124,7 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-impl \
+    android.hardware.bluetooth@1.0-service \
     libbt-vendor
 
 # Misc dependency packages
@@ -151,6 +154,7 @@ endif
 # Keystore
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service \
     keystore.msm8226
 
 # Charger
@@ -158,7 +162,8 @@ PRODUCT_PACKAGES += charger charger_res_images
 
 # Memtrack HIDL Interfaces
 PRODUCT_PACKAGES += \
-    android.hardware.memtrack@1.0-impl
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service
 
 # Default OMX service to non-Treble
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -166,11 +171,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service
 
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl \
+    android.hardware.gnss@1.0-service \
     gps.msm8226
 
 # HIDL
@@ -192,6 +199,7 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl \
+    android.hardware.light@2.0-service \
     lights.msm8226
 
 # OMX
@@ -212,6 +220,7 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
+    android.hardware.sensors@1.0-service \
     sensors.msm8226 \
     sensors.qcom
 
