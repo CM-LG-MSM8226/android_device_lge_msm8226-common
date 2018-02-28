@@ -171,3 +171,10 @@ include device/qcom/sepolicy/legacy-sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
 
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /system/bin/mpdecision|libshims_atomic.so \
+    /system/lib/libcamera_client.so|libcamera_parameters_shim.so \
+    /system/lib/hw/camera.vendor.msm8226.so|libshims_atomic.so \
+    /system/vendor/lib/libmmcamera2_sensor_modules.so|libshims_atomic.so \
+    /system/vendor/lib/libmmqjpeg_codec.so|libboringssl-compat.so
