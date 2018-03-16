@@ -180,10 +180,6 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-service \
     gps.msm8226
 
-# HIDL
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
-
 # HAL
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \

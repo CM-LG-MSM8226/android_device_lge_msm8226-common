@@ -130,6 +130,9 @@ SF_VSYNC_EVENT_PHASE_OFFSET_NS := 0000000
 # Hardware tunables framework
 BOARD_HARDWARE_CLASS := $(VENDOR_PATH)/lineagehw/
 
+# HIDL
+DEVICE_MANIFEST_FILE := $(VENDOR_PATH)/manifest.xml
+
 # GPS
 TARGET_NO_RPC := true
 
