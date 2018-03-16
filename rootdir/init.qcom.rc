@@ -398,7 +398,7 @@ service netmgrd /system/bin/netmgrd
     user root
     group root wifi wakelock radio inet system
 
-service sensors /system/bin/sensors.qcom
+service sensors /vendor/bin/sensors.qcom
     class late_start
     user root
     group root radio system
